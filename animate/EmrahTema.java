@@ -101,10 +101,10 @@ public class EmrahTema implements Animator {
       
           //Yýl ve Gün
           g.setColor(Color.BLACK);
-          String str = "Mars: "+String.valueOf(yilMars)+" Yýl "+String.valueOf((int)gunMars)+" Gün | ";
-          str += "Dünya: "+String.valueOf(yilDunya)+" Yýl "+String.valueOf((int)gunDunya)+" Gün | ";
-          str += "Venüs: "+String.valueOf(yilVenus)+" Yýl "+String.valueOf((int)gunVenus)+" Gün | ";
-          str += "Merkür: "+String.valueOf(yilMerkur)+" Yýl "+String.valueOf((int)gunMerkur)+" Gün";
+          String str = "Mars: "+String.valueOf(yilMars)+" Years "+String.valueOf((int)gunMars)+" Days | ";
+          str += "Earth: "+String.valueOf(yilDunya)+" Years "+String.valueOf((int)gunDunya)+" Days | ";
+          str += "Venus: "+String.valueOf(yilVenus)+" Years "+String.valueOf((int)gunVenus)+" Days | ";
+          str += "Mercury: "+String.valueOf(yilMerkur)+" Years "+String.valueOf((int)gunMerkur)+" Days";
           g.drawString(str, 20, 460);
       }
    } 
