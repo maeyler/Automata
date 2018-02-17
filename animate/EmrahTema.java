@@ -6,13 +6,13 @@ import java.awt.Graphics;
 import java.awt.Container;
 
 public class EmrahTema implements Animator {
-    final static double DELTADunya = Math.PI/49; //one turn = 100 ticks //50 ile 3.6
+    final static double DELTADunya = Math.PI/49;
     final static int ADunya = MX-50, BDunya = MY-50, DDunya = 25;
-    final static double DELTAMars = Math.PI/95; //one turn = 100 ticks //50 ile 3.6
+    final static double DELTAMars = Math.PI/95;
     final static int AMars = MX-50, BMars = MY-50, DMars = 15;
-    final static double DELTAVenus = Math.PI/16; //one turn = 100 ticks //50 ile 3.6
+    final static double DELTAVenus = Math.PI/16;
     final static int AVenus = MX-50, BVenus = MY-50, DVenus = 20;
-    final static double DELTAMerkur = Math.PI/12; //one turn = 100 ticks //50 ile 3.6
+    final static double DELTAMerkur = Math.PI/12;
     final static int AMerkur = MX-50, BMerkur = MY-50, DMerkur = 10;
     final Container pan = new Panel();
     double angleDunya = 0; //in radians
@@ -71,11 +71,11 @@ public class EmrahTema implements Animator {
       public void paint(Graphics g) {
           g.clearRect(0, 0, 2*MX, 2*MY);
           
-          //Güneþ
+          //Sun
           g.setColor(Color.YELLOW);
           g.fillOval(300, 220,50,50);
           
-          //Dünya
+          //Earth
           g.setColor(Color.BLUE);
           double xDunya = MX + ADunya * Math.cos(angleDunya)/100*55;
           double yDunya = MY + BDunya * Math.sin(angleDunya)/100*60;
@@ -87,19 +87,19 @@ public class EmrahTema implements Animator {
           double yMars = MY + BMars * Math.sin(angleMars);
           g.fillOval((int)xMars, (int)yMars, DMars, DMars);
           
-          //Venüs
+          //Venus
           g.setColor(Color.PINK);
           double xVenus = MX + AVenus * Math.cos(angleVenus)/100*70;
           double yVenus = MY + BVenus * Math.sin(angleVenus)/100*75;
           g.fillOval((int)xVenus, (int)yVenus, DVenus, DVenus);
           
-          //Merkür
+          //Mercury
           g.setColor(Color.ORANGE);
           double xMerkur = MX + AMerkur * Math.cos(angleMerkur)/100*20;
           double yMerkur = MY + BMerkur * Math.sin(angleMerkur)/100*25;
           g.fillOval((int)xMerkur, (int)yMerkur, DMerkur, DMerkur);
       
-          //Yýl ve Gün
+          //Years and Days
           g.setColor(Color.BLACK);
           String str = "Mars: "+String.valueOf(yilMars)+" Years "+String.valueOf((int)gunMars)+" Days | ";
           str += "Earth: "+String.valueOf(yilDunya)+" Years "+String.valueOf((int)gunDunya)+" Days | ";
