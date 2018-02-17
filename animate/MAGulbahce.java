@@ -11,7 +11,8 @@ public class MAGulbahce implements Animator {
     final Container pan = new Panel();
 
     double angle = 0; //in radians
-     static int counter=0;
+    final Font font = new Font("Serif", Font.ROMAN_BASELINE, 35);
+    /*static*/ int counter=0;
     final static int A = MX-50, B = MY-50;
     public int doTick() {
         angle += DELTA;
@@ -37,12 +38,12 @@ public class MAGulbahce implements Animator {
         @Override
         public void paint(Graphics g) {
             g.clearRect(0, 0, 2 * MX, 2 * MY);
-            Font font = new Font("Gisha", Font.ROMAN_BASELINE, 35);
-            
+            //Font font = new Font("Gisha", Font.ROMAN_BASELINE, 35);
+            //you should not make a Font instance 5 times a second!!
             g.setFont(font);
             String s = "RoseGarden";
             double x = MX + A * Math.cos(angle);
-          double y = MY + B * Math.sin(angle);
+            double y = MY + B * Math.sin(angle);
             g.setColor(Color.DARK_GRAY);
             
             int dance=counter%2+1;
