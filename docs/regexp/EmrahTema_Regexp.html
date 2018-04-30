@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Emrah Tema Regular Expressions</title>
+<style type="text/css">
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+	font-family: sans-serif;
+	margin: 40px;
+	background-image: url(https://i.hizliresim.com/4aBakA.jpg);
+}
+
+.mainDiv {
+  width: 800px;
+  background-color:#FFF;
+  margin: 0 auto;
+  padding: 40px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.22),
+    0 1px 10px 0 rgba(0, 0, 0, 0.22),
+    0 2px 4px -1px rgba(0, 0, 0, 0.4);
+  margin-top:70px;
+  opacity:0.95;
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+input {
+  border: 1px solid lightgray;
+  padding: 8px;
+  font-size: 18px;
+  width: 450px;
+  margin-top: 4px;
+}
+a:link {
+	color: #630;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #630;
+}
+a:hover {
+	text-decoration: none;
+	color: #636;
+}
+a:active {
+	text-decoration: none;
+	color: #630;
+}
+a {
+	font-size: 17px;
+	color: #030;
+	font-weight: bold;
+}
+body,td,th {
+	color: #222;
+}
+</style>
+</head>
+
+<body>
+<div class="mainDiv">
+  <table width="800" border="0">
+    <tr>
+      <td width="250" align="left" valign="top"><b style="font-size:19px;">REGULAR EXPRESSIONS</b><br />
+      
+      	<b style="font-size:18px;">&nbsp;&nbsp;Information</b><br />
+   		<a href="#" onclick="showText(0)">&nbsp;&nbsp;<img src="https://orig00.deviantart.net/62ce/f/2014/077/9/f/xillia_loading_20fps_by_revisdumas-d7aranz.gif" 
+            width=15 height=15/>What is RegExp?</a><br />
+       	<a href="#" onclick="showText(1)">&nbsp;&nbsp;<img src="https://orig00.deviantart.net/62ce/f/2014/077/9/f/xillia_loading_20fps_by_revisdumas-d7aranz.gif" 
+            width=15 height=15/>RegExp Rules</a><br />
+        <a href="#" onclick="showText(2)">&nbsp;&nbsp;<img src="https://orig00.deviantart.net/62ce/f/2014/077/9/f/xillia_loading_20fps_by_revisdumas-d7aranz.gif" 
+            width=15 height=15/>About the Program</a><br />
+        
+      	<b style="font-size:18px;">&nbsp;&nbsp;Pattern Rules</b><br />
+       	<a href="#" onclick="showText(3)">&nbsp;&nbsp;<img src="https://orig00.deviantart.net/62ce/f/2014/077/9/f/xillia_loading_20fps_by_revisdumas-d7aranz.gif" 
+            width=15 height=15/>Letters and Characters</a><br />
+        <a href="#" onclick="showText(4)">&nbsp;&nbsp;<img src="https://orig00.deviantart.net/62ce/f/2014/077/9/f/xillia_loading_20fps_by_revisdumas-d7aranz.gif" 
+            width=15 height=15/>Digits</a><br />
+        <a href="#" onclick="showText(5)">&nbsp;&nbsp;<img src="https://orig00.deviantart.net/62ce/f/2014/077/9/f/xillia_loading_20fps_by_revisdumas-d7aranz.gif" 
+            width=15 height=15/>Matching and Excluding</a><br />
+        <a href="#" onclick="showText(6)">&nbsp;&nbsp;<img src="https://orig00.deviantart.net/62ce/f/2014/077/9/f/xillia_loading_20fps_by_revisdumas-d7aranz.gif" 
+            width=15 height=15/>Things in a Range</a><br />
+        <a href="#" onclick="showText(7)">&nbsp;&nbsp;<img src="https://orig00.deviantart.net/62ce/f/2014/077/9/f/xillia_loading_20fps_by_revisdumas-d7aranz.gif" 
+            width=15 height=15/>Repetitions</a><br />
+        <a href="#" onclick="showText(8)">&nbsp;&nbsp;<img src="https://orig00.deviantart.net/62ce/f/2014/077/9/f/xillia_loading_20fps_by_revisdumas-d7aranz.gif" 
+            width=15 height=15/>Optional Character</a><br />
+        <a href="#" onclick="showText(9)">&nbsp;&nbsp;<img src="https://orig00.deviantart.net/62ce/f/2014/077/9/f/xillia_loading_20fps_by_revisdumas-d7aranz.gif" 
+            width=15 height=15/>Whitespace Characters</a><br />
+        <a href="#" onclick="showText(10)">&nbsp;&nbsp;<img src="https://orig00.deviantart.net/62ce/f/2014/077/9/f/xillia_loading_20fps_by_revisdumas-d7aranz.gif" 
+            width=15 height=15/>Starts and Ends</a><br />
+        <a href="#" onclick="showText(11)">&nbsp;&nbsp;<img src="https://orig00.deviantart.net/62ce/f/2014/077/9/f/xillia_loading_20fps_by_revisdumas-d7aranz.gif" 
+            width=15 height=15/>Captures and Groups</a><br />
+        <a href="#" onclick="showText(12)">&nbsp;&nbsp;<img src="https://orig00.deviantart.net/62ce/f/2014/077/9/f/xillia_loading_20fps_by_revisdumas-d7aranz.gif" 
+            width=15 height=15/>Matches One of Words</a><br />
+
+<b style="font-size:18px;"><a href="#" onclick="showText(13)">&nbsp;&nbsp;References</b></a><br />
+      </td>
+      <td width="20">&nbsp;</td>
+      <td width="516"><table width="524" border="0">
+        <tr>
+          <td width="518"><br />
+			<div id="show" contentEditable=false class="textBox" style="width:450px;">
+            <center><img src="https://i.hizliresim.com/YgX69z.png"></center>
+            </div>
+          <br />
+          <img src="https://www.clipartqueen.com/image-files/black-and-white-flower-border.png" width=450/></td>
+        </tr>
+        <tr>
+          <td>
+          <label><b>Try a Regular Expression</b></label>
+          <label for="pattern">Pattern:<br />
+          <input type="text" id="pattern" onKeyUp="myFunction()"/></label>
+          <label for="string">Text:<br />
+          <input type="text" id="string" onKeyUp="myFunction()"/></label>
+           
+          <div id="output" contentEditable=false class="textBox" style="font-size: 18px;width:450px;">Output: </div>
+            <br /><br />
+          </td>
+        </tr>
+      </table></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
+<script>
+function showText(selected) {
+	var printt = "";
+	
+	if(selected == 0){
+		printt = "<b>What are Regular Expressions?</b><br>"+
+		"Regular Expressions is a formal language that helps us to design a pattern to find specific parts from a "+
+		"text. It is popular in most of the programming languages for text operations and natural language processing steps. It "+
+		"has a lot of rules for patterns that make possible to find any part of texts. It is also used to check inputs "+
+		"if they are in correct form or not.<br>";
+	}
+	else if(selected == 1){
+		printt = "<b>RegExp Rules</b></br>"+
+		"Regular Expressions is a formal language, so it is designed with many rules. The pattern design rules are "+
+		"shown in details in the section \"Pattern Rules\". If we talked about the most basic rules which are shown "+
+		"in the Formal Languages and Automata Theory course:<br>"+
+		"-> <b>|</b> : OR operator<br>"+
+		"-> <b>*</b> : Repeat Zero or More times<br>"+
+		"-> <b>+</b> : Repeat One or More times<br>"+
+		"There can be designed many patterns for basic operations with using these fundamental rules. Of course these "+
+		"are not enough for a well-designed pattern, for advanced patterns the section \"Pattern Rules\" must be "+
+		"learned and understood well. The big part of pattern rules in that section are learned from the site: "+
+		"<a href=\"https://regexone.com/\" target=\"_blank\">regexone.com</a><br>";
+	}
+	else if(selected == 2){
+		printt = "<b>The Program</b><br>"+
+		"The program which is shown below with the name of \"Try a Regular Expression\" is a simple written program "+
+		"with the JavaScript programming language, because of this, it can be used here in the HTML web page. "+
+		"It has two inputs; one of them is for the pattern and another one is for any text that we want to match something. "+
+		"There is a function that becomes active in the action of typing something in any input and this function makes "+
+		"matches in the text according to our pattern. Firstly, I writed the function with more than 150 rows of code, but "+
+		"it did not work well for every RegExp pattern, for the most of the patterns it was good but for all of the patterns it was "+
+		"not enough. After then I decided to use a method with name \"replace\" to replace matches with colored matches "+
+		"but it was also not enough. After some researches, I found that the \"replace\" method can be used with "+
+		"Regular Expressions inside it and I used it, so the number of rows of my code reduced, so it is now just 5 rows. "+
+		"The function is named by myFunction() and it firstly takes the texts inside of inputs. One of the texts is the pattern "+
+		"and the other one is the text. After then the function controls if any of input is empty, so if there is an empty "+
+		"input, the web page gives an error, so doesn't work, for this reason, a control was too necessary. After the controlling, "+
+		"it makes colored the part of strings of text that are matched using the pattern. So it updates the input string "+
+		"and gives it as the result on the output. The codes of the program we can see below.<br><br>"+
+		"<img src=\"https://i.hizliresim.com/LbVDRb.jpg\" width=450><br>";
+	}
+	else if(selected == 3){
+		printt = "<b>Letters and Characters</b><br>"+
+		"When we use Regular Expressions, everything is essentially a character and we write patterns to match a string."+
+		"The string can include letters, digits, punctuations and other symbols. If we write the characters and the "+
+		"letters which we want to find will be enough for matches.<br><br>"+
+		"Example pattern: <b>abc</b> (match abc)<br>"+
+		"Matches: <i>Birinci sınıfta ilk olarak <font color=\"#F60\">abc</font>\'yi öğreniriz, "+
+		"<font color=\"#F60\">abc</font>çdefgh... diye gider.</i><br><br>"+
+		"When we create a pattern, generally we don\'t know which characters will be in the string but we want that "+
+		"the string must include some characters. In these situations, we use a special character which represents "+
+		"any character. The special character is .(dot), but when we want to match dot character we must use it in "+
+		"a different form with one slash \\. Slash is used as the escape character in Regular Expressions.<br><br>"+
+		"Example pattern: <b>...\\.</b> (match three characters which have one dot after them)<br>"+
+		"Matches: <i>Roma\'da ikinci adam olacağıma, bir köyde birinci adam olurum daha <font color=\"#F60\">iyi.</font></i><br>";
+	}
+	else if(selected == 4){
+		printt = "<b>Digits</b><br>"+
+		"Characters include normal letters and digits, but in Regular Expressions, digits should not be used as a character, so "+
+		"if we want to match some digits, we must use them together like 320. It is also possible that we can use \\d "+
+		"to match any digit if we don\'t use slash, it will be processed as the d character.<br><br>"+
+		"Example pattern: <b>1923</b> (match 1923)<br>"+
+		"Matches: <i>Cumhuriyet <font color=\"#F60\">1923</font>\'te ilan edildi.</i><br><br>"+
+		"Example pattern: <b>\\d\\d</b> (match two digits together)<br>"+
+		"Matches: <i>5 kere 5, <font color=\"#F60\">25</font> eder ama <font color=\"#F60\">12</font>5 etmez</i><br>";
+	}
+	else if(selected == 5){
+		printt = "<b>Matching and Excluding</b><br>"+
+		"The .(dot) metacharacter is powerful, but sometimes it is not good. If we want to match specific characters "+
+		"with using Regular Expressions, we must define them inside square brackets.<br><br>"+
+		"Example pattern: <b>[abc]</b> (the pattern will only match a single a, b, or c letter and nothing else)<br>"+
+		"Matches: <i>Boş <font color=\"#F60\">b</font>ir çuv<font color=\"#F60\">a</font>lın dik durm<font color=\"#F60\">a"+
+		"</font>sı zordur.</i> (b and B are different characters)<br><br>"+
+		"In some cases, there can be specific characters that we don\'t want to match. To exclude specific characters "+
+		"we must use them inside square brackets with the ^ character on the front of them.<br><br>"+
+		"Example pattern: <b>[^abc]</b> (the pattern will match any single character except for the letters a, b, or c)<br>"+
+		"Matches: <i><font color=\"#F60\">Bir ins</font>a<font color=\"#F60\">n köprü kur</font>"+
+		"a<font color=\"#F60\">r </font>b<font color=\"#F60\">in ins</font>a<font color=\"#F60\">n geçer</font>.</i><br>";
+	}
+	else if(selected == 6){
+		printt = "<b>Things in a Range</b><br>"+
+		"When we want to match a character that can be in a sequential range character, we use square brackets notation "+
+		"and we write the start and the end of the range with one dash between of them. For example [a-z] means find a "+
+		"character in range a and z. Multiple character ranges can also be used in the same set of brackets.<br><br>"+
+		"Example pattern: <b>[A-C][h-j][v-z]</b> (the first character: A,B or C, the second character: h,i or j, the "+
+		"third character v,w,x,y or z and the fourth character must be a digit)<br>"+
+		"Matches: <i><font color=\"#F60\">Biz</font> yenilirsek kalkar yine deneriz, "+
+		"diktatörler yenilirlerse sonları olur.[F. Castro]</i><br>";
+	}
+	else if(selected == 7){
+		printt = "<b>Repetitions</b><br>"+
+		"When we want to match repetition of a character or a set of characters, we must use curly braces with a number or "+
+		"numbers inside them. If we use just a number like this {2}, the rules on the left of it will be repeated two times. "+
+		"If we use two numbers together like this {2,4} it means the rules on the left of it will be repeated 2,3 or 4 "+
+		"times. As it is shown in the section RegExp Rules, + sum operator means that the expression will be repeated "+
+		"one or more times, * multiply operator means that the expression will be repeated zero or more times.<br><br>"+
+		"Example pattern: <b>(lay){2,3}lom</b> (lay must be repeated 2 or 3 times)<br>"+
+		"Matches: <i><font color=\"#F60\">laylaylom</font> galiba sana göre sevmeler.</i><br>";
+	}
+	else if(selected == 8){
+		printt = "<b>Optional Character</b><br>"+
+		"Sometimes we need to write a pattern that has optional characters inside it. In the Regular Expressions ? (question "+
+		"mark) is used as the optional character, so it makes optional any character or expression on the left of it.<br><br>"+
+		"Example pattern: <b>g?G?elecek(tir)?</b><br>"+
+		"Matches: <i><font color=\"#F60\">Gelecek</font> biz istemesek de <font color=\"#F60\">gelecektir</font>.</i><br>";
+	}
+	else if(selected == 9){
+		printt = "<b>Whitespace Characters</b><br>"+
+		"There are many whitespace characters in normal language and it is not possible to match all of "+
+		"them with Regular Expressions without special rules. Because of this, we must use these whitespace characters "+
+		"special forms to match them.<b><br>"+
+		"Space ( ) <br>Tab (\\t) <br>New Line (\\n) <br>Carriage Return (\\r) <br>Any Whitespace (\\s)<br>";
+	}
+	else if(selected == 10){
+		printt = "<b>Starts and Ends</b><br>"+
+		"When we need to match a specific word or set of words that there is nothing else in a row "+
+		"it is good to use ^ for the start "+
+		"and $ for the end, but it mustn\'t be used inside square brackets because this (^) means not and it will not work "+
+		"correctly.<br><br>"+
+		"Example pattern: <b>^Bir yaz gecesi rüyası$</b><br>"+
+		"Matches: <i><font color=\"#F60\">Bir yaz gecesi rüyası</font></i><br>"+
+		"Doesn\'t match: <i>Bir yaz gecesi rüyası kitabı</i><br>";
+	}
+	else if(selected == 11){
+		printt = "<b>Captures and Groups</b><br>"+
+		"Any pattern inside of these parentheses ( ) is captured as a group in Regular Expressions. It is good to be used "+
+		"in patterns that we want to the name of a file.<br><br>"+
+		"Example pattern: <b>^(dosya.+)\.txt$</b> (the file names that starts with dosya and has txt as extension)<br>"+
+		"Matches: <i><font color=\"#F60\">dosya Run Teacher.txt</font></i><br><br>"+
+		"As we can capture groups, we can capture sub groups as well. It is possible with using parenthesis inside of "+
+		"parenthesis like this (( )( )).<br><br>"+
+		"Example pattern: <b>((\\d+) \\w+ (\\d+))</b> (it matches -> \'number with unlimited length\' whitespace "+    		
+		"word with unlimited length\' whitespace \'number with unlimited length\')<br>"+
+		"Matches: <i><font color=\"#F60\">26 Temmuz 2010</font>\'da güzel bir olay gerçekleşti.</i><br>";
+	}
+	else if(selected == 12){
+		printt = "<b>Matches One of Words</b><br>"+
+		"When we want to match a word or another word from a group, we must use \'or\' (|) operator between the words "+
+		"then Regular Expression will see one of them if there is any.<br><br>"+
+		"Example pattern: <b>bir (sincap|ördek)( gibi)?</b><br>"+
+		"Matches: <i>Doldurulmuş <font color=\"#F60\">bir sincap gibi</font> susuyorsun öylece.</i><br>"+
+		"Matches: <i>Yüzen <font color=\"#F60\">bir ördek</font> gördüm.</i><br>";
+	}else if(selected == 13){
+		printt = "<b>References</b><br>"+
+		"-regexone.com is the reference of rules here.<br>"+
+		"-orig00.deviantart.net is the reference of the flowers pic. above Try a RegExp.<br>"+
+		"-clipartqueen.com is the reference of mini-flowers of the topics.<br>"+
+		"-wallpapercave.com is the reference of the background image.<br>"+
+		"-the logo is taken from atheistrepublic.com and edited.<br>"+
+		"-stackoverflow.com is used to solve some problems.";
+	}
+	
+	document.getElementById("show").innerHTML = printt;
+}
+</script>
+
+
+<script>
+function myFunction() {
+  	var pattern = document.getElementById("pattern").value;
+	var printt = document.getElementById("string").value;
+	if(pattern != "" && printt != ""){
+		printt = "Output: "+printt.replace(RegExp(pattern,'g'), 
+				("<font color=\"#F60\">$&</font>"));
+		document.getElementById("output").innerHTML = printt;
+	}
+}
+</script>
