@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    address{
+        text-align: right;
+
+    }
+    </style>
+</head>
+<body>
+    <div >
+       <h2><center>Context Free Grammar </center></h2>      
+       <h3> <dd> Özet</dd></h3> 
+        <p> <dd>Kullanıcının kendine özgü dil oluşturmasını amaçladığım için, ilk iş bir burada 
+                dil kurallarına uygun giriş için eklemeler yapılması.</br> 
+                Sonuç olarak ise girilen kurallara uygun kullanıcı bir ifade girdiğinde onun kontrolünün yapmasını 
+                sağlamak ve ifadenin doğru-yanlış olarak çıktısını yazdırmak.</dd></p>
+        <h3><dd>Proje Konusu</dd></h3>
+        <p> <dd>Kullanıcının girdiği kurala uygun olarak girilen ifadenin doğru veya yanlış kontrolünün yapılması.</dd></p>
+        <h3><dd>Proje İçeriği</dd></h3>
+        <p>	<dd>CFG kuralı olarak aşağıdakine benzer bir örnek olursa eğer;</dd> 
+            <dd><br><li>S -> 0S1 | 0 | 1  </li></dd>
+            <dd><br><li>0011, 1010, 0101, 1111, 0000</li></br></dd>
+               <dd> gibi doğru veya yanlış ifadeler girilecek ve kurala bakınca sonuç olarak ekrana accept veya reject
+                   yazması beklenir.<br>(Ya bir label üzerinden ya da JPane)</br>
+                  <br> Tabi burada CFG'nin kendine has olarak ilerleme stili yukardaki kurala göre şu şekilde olmaktadır;
+                   <dd><br><li>S->0S1->00S11->00011</li></br></dd>
+                   <dd> gibi doğru bir ifade veya hatta buna benzer bir çok doğru ifade elde edilebilir.
+                       Bu kurala göre önce "1" ile başlanılması tamamen hatadır.</br> "0S1" kuralı burada önce "0"  sonra "1"
+                       olduğunu göstermektedir."1000" gibi bir örnek tamamen yanlış ifadedir.
+               </dd> 
+        </p>
+   
+       
+    </div>
+    <address>Muhammet Ali GÜLBAHÇE <br>30.04.2018 </address>
+</body>
+
+</html>
