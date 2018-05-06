@@ -124,7 +124,9 @@ There is another example for you to see in the application. So if you came up to
  > To see the other examples you have to click the Reset button and then select the other regex. Then you good to go.
 
 ## Resources
-http://jacobappleton.io/2015/07/20/regex-iv-from-nfa-to-dfa/#tocAnchor-1-3
-https://www.cs.rochester.edu/~nelson/courses/csc_173/fa/fa.html
-https://www.tutorialspoint.com/automata_theory/deterministic_finite_automaton.htm
-https://www.geeksforgeeks.org/toc-finite-automata-introduction/
+[http://jacobappleton.io/2015/07/20/regex-iv-from-nfa-to-dfa/#tocAnchor-1-3](http://jacobappleton.io/2015/07/20/regex-iv-from-nfa-to-dfa/#tocAnchor-1-3)
+[https://www.cs.rochester.edu/~nelson/courses/csc_173/fa/fa.html](https://www.cs.rochester.edu/~nelson/courses/csc_173/fa/fa.html)
+[https://www.tutorialspoint.com/automata_theory/deterministic_finite_automaton.htm](https://www.tutorialspoint.com/automata_theory/deterministic_finite_automaton.htm)
+[https://www.geeksforgeeks.org/toc-finite-automata-introduction/](https://www.geeksforgeeks.org/toc-finite-automata-introduction/)
+
+# Made by Enes Kamil YILMAZ
