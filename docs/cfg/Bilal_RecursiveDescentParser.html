@@ -6,12 +6,12 @@
     <style>
     #code {
         float: left;
-        width: 30%;
+        width: 425px;
         overflow: hidden;
     }
     #visualization {
         float: left;
-        width: 70%;
+        width: calc(100% - 450px);
         overflow: hidden;
     }
     html, body {
@@ -46,15 +46,14 @@
 
 <div>
     <h3>Instructions</h3>
-    <p>
-        Find an <b>expression</b> to inspect. i.e. (4+3)<br>
-        Enter the expression to input area<br>
-        Visualize the recursive descent parser algorithm with <b>'Right Arrow'</b> on keyboard
-        . Alternatively, click <b>'Next'</b> button.<br>
-    </p>
+    <p>  
+        Enter an expression in the input area and press <b>Start</b><br> 
+        Visualize the recursive descent parser algorithm with <b>'Right Arrow'</b> on keyboard. Alternatively, click <b>'Next'</b> button.
+    </p> 
+
 </div>
 
-<div>
+<div id = "form">
     <label><b>Expression</b></label>
     <input id="input-exp" type="text"></input>
     <button id='start' style="margin-right: 10px">Start</button>
@@ -62,7 +61,7 @@
 </div>
 
 <div id='visual' style="width: 100%; overflow: hidden; visibility: hidden;">
-        <div id="code"></div>
+        <div id="code" ></div>
 
         <div id="visualization">
             <h3>Visualization</h3>

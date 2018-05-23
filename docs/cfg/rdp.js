@@ -215,23 +215,31 @@ var Parser = /** @class */ (function () {
             var c = new Constant(this.lex.nval);
             //#state 
             this.checkPoint(point, StateStatus.DRAW, c.name, region, c.map);
+            region = 'CONSTANTMATCH';
+            this.checkPoint(point, StateStatus.DRAW, c.name, region, c.map);
+            this.match(Token.NUMBER);
             region = 'CONSTANTRETURN';
             this.checkPoint(point, StateStatus.ERASE, c.name, region);
-            this.match(Token.NUMBER);
             return c;
         }
         region = 'LEFT';
         this.checkPoint(point, StateStatus.DRAW, 'factor()', region);
         if (this.tok == Token.LEFT) {
+            region = 'LEFTMATCH';
+            this.checkPoint(point, StateStatus.DRAW, 'factor()', region);
             this.match(Token.LEFT);
+            region = 'FACTOREXP';
+            this.checkPoint(point, StateStatus.DRAW, 'factor()', region);
             var e = this.expr();
             //#state 
             if (e != undefined) {
                 this.checkPoint(point, StateStatus.DRAW, e.name, region, e.map);
+                region = 'RIGHTMATCH';
+                this.checkPoint(point, StateStatus.DRAW, e.name, region);
+                this.match(Token.RIGHT);
                 region = 'LEFTRETURN';
                 this.checkPoint(point, StateStatus.ERASE, e.name, region);
             }
-            this.match(Token.RIGHT);
             return e;
         }
         this.expected("Factor");
@@ -495,6 +503,7 @@ var RDPController = /** @class */ (function () {
         this.model.parse(parserInput);
         this.view.resize();
         this.view.updateExpression(parserInput);
+        this.view.updateToken(Token.EMPTY, -1);
         this.stateIndexer = -1;
     };
     RDPController.prototype.takePoint = function () {
@@ -604,7 +613,6 @@ var RDPView = /** @class */ (function () {
         this.highlighter = new Highlighter(_code);
         this.highlighter.adjustCode();
         this.updateCode(this.highlighter.code);
-        this.updateToken(Token.EMPTY, 0);
     };
     RDPView.prototype.highlight = function (area) {
         //<span style='color:blue'> </span>
@@ -712,12 +720,12 @@ var RDPView = /** @class */ (function () {
     };
     RDPView.prototype.updateExpression = function (expression) {
         var expr = document.getElementById('tok-expression');
-        expr.innerHTML = expression;
+        expr.innerHTML = ' ' + expression;
     };
     RDPView.prototype.updateToken = function (tok, tokIndex) {
         var pointer = document.getElementById('pointer');
         var blank = '';
-        for (var index = 0; index < tokIndex; index++) {
+        for (var index = -1; index < tokIndex; index++) {
             blank += ' ';
         }
         blank += "^ TOKEN = " + tok.toString();
@@ -729,7 +737,7 @@ var RDPView = /** @class */ (function () {
     };
     return RDPView;
 }());
-var _code = "<h3>Code</h3>\n<pre>\nExpression expr() {\n#EXPRESSION#\n&emsp;&emsp;Expression e = term();\n#ENDEXPRESSION#\n&emsp;&emsp;Token t = tok;\n#PLUSMINUS#\n&emsp;&emsp;while (t == Token.PLUS || t == Token.MINUS)  {\n&emsp;&emsp;&emsp;&emsp;match(t);\n&emsp;&emsp;&emsp;&emsp;e = new Binary(e, t, term());\n&emsp;&emsp;&emsp;&emsp;t = tok;\n&emsp;&emsp;}\n#ENDPLUSMINUS#\n#EXPRETURN#\n&emsp;&emsp;return e;\n#ENDEXPRETURN#\n}\nExpression term() {\n#TERM#\n&emsp;&emsp;Expression e = factor();\n#ENDTERM#\n&emsp;&emsp;Token t = tok;\n#STARSLASH#\n&emsp;&emsp;while (t == Token.STAR || t == Token.SLASH)  {\n&emsp;&emsp;&emsp;&emsp;match(t);\n&emsp;&emsp;&emsp;&emsp;e = new Binary(e, t, factor());\n&emsp;&emsp;&emsp;&emsp;t = tok;\n&emsp;&emsp;}\n#ENDSTARSLASH#\n#TERMRETURN#\n&emsp;&emsp;return e;\n#ENDTERMRETURN#\n}\nExpression factor() {\n#FACTOR#\n&emsp;&emsp;if (tok == Token.NUMBER)  {\n#CONSTANT#\n&emsp;&emsp;&emsp;&emsp;Expression c = new Constant(lex.nval);\n&emsp;&emsp;&emsp;&emsp;match(Token.NUMBER);\n#ENDCONSTANT#\n#CONSTANTRETURN#\n&emsp;&emsp;&emsp;&emsp;return c;\n#ENDCONSTANTRETURN#\n&emsp;&emsp;}\n&emsp;&emsp;if (tok == Token.LEFT)  {\n#LEFT#\n&emsp;&emsp;&emsp;&emsp;match(Token.LEFT);\n&emsp;&emsp;&emsp;&emsp;Expression e = expr();\n&emsp;&emsp;&emsp;&emsp;match(Token.RIGHT);\n#ENDLEFT#\n#LEFTRETURN#\n&emsp;&emsp;&emsp;&emsp;return e;\n#ENDLEFTRETURN#\n&emsp;&emsp;}\n#ENDFACTOR#\n&emsp;&emsp;expected(\"Factor\");\n&emsp;&emsp;return null;\n}\n</pre>";
+var _code = "<h3>Code</h3>\n<pre style=\"display: inline-block\">\nExpression expr() {\n#EXPRESSION#\n&emsp;&emsp;Expression e = term();\n#ENDEXPRESSION#\n&emsp;&emsp;Token t = tok;\n#PLUSMINUS#\n&emsp;&emsp;while (t == Token.PLUS || t == Token.MINUS)  {\n&emsp;&emsp;&emsp;&emsp;match(t);\n&emsp;&emsp;&emsp;&emsp;e = new Binary(e, t, term());\n&emsp;&emsp;&emsp;&emsp;t = tok;\n&emsp;&emsp;}\n#ENDPLUSMINUS#\n#EXPRETURN#\n&emsp;&emsp;return e;\n#ENDEXPRETURN#\n}\nExpression term() {\n#TERM#\n&emsp;&emsp;Expression e = factor();\n#ENDTERM#\n&emsp;&emsp;Token t = tok;\n#STARSLASH#\n&emsp;&emsp;while (t == Token.STAR || t == Token.SLASH)  {\n&emsp;&emsp;&emsp;&emsp;match(t);\n&emsp;&emsp;&emsp;&emsp;e = new Binary(e, t, factor());\n&emsp;&emsp;&emsp;&emsp;t = tok;\n&emsp;&emsp;}\n#ENDSTARSLASH#\n#TERMRETURN#\n&emsp;&emsp;return e;\n#ENDTERMRETURN#\n}\nExpression factor() {\n#FACTOR#\n&emsp;&emsp;if (tok == Token.NUMBER)  {\n#CONSTANT#\n&emsp;&emsp;&emsp;&emsp;Expression c = new Constant(lex.nval);\n#ENDCONSTANT#\n#CONSTANTMATCH#\n&emsp;&emsp;&emsp;&emsp;match(Token.NUMBER);\n#ENDCONSTANTMATCH#\n#CONSTANTRETURN#\n&emsp;&emsp;&emsp;&emsp;return c;\n#ENDCONSTANTRETURN#\n&emsp;&emsp;}\n&emsp;&emsp;if (tok == Token.LEFT)  {\n#LEFT#\n#LEFTMATCH#\n&emsp;&emsp;&emsp;&emsp;match(Token.LEFT);\n#ENDLEFTMATCH#\n#FACTOREXP#\n&emsp;&emsp;&emsp;&emsp;Expression e = expr();\n#ENDFACTOREXP#\n#RIGHTMATCH#\n&emsp;&emsp;&emsp;&emsp;match(Token.RIGHT);\n#ENDRIGHTMATCH#\n#ENDLEFT#\n#LEFTRETURN#\n&emsp;&emsp;&emsp;&emsp;return e;\n#ENDLEFTRETURN#\n&emsp;&emsp;}\n#ENDFACTOR#\n&emsp;&emsp;expected(\"Factor\");\n&emsp;&emsp;return null;\n}\n</pre>";
 var State = /** @class */ (function () {
     function State(status, tok, tokenMoved, region, shape) {
         this.status = status;
@@ -755,13 +763,14 @@ var StateStatus;
 var view = new RDPView();
 var model = new RDPModel();
 var controller = new RDPController(model, view);
-document.getElementById("input-exp").value = '(4+3)';
+document.getElementById("input-exp").value = '44 + 33';
 function start() {
     try {
         var input = document.getElementById("input-exp");
         controller.reinit(input.value);
         document.getElementById('visual').style.visibility = 'visible';
         document.getElementById('next').style.visibility = 'visible';
+        document.location.href = '#form';
     }
     catch (e) {
         document.getElementById('visual').style.visibility = 'hidden';
